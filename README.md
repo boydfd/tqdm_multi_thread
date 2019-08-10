@@ -1,3 +1,8 @@
+# A tqdm multi-thread helper
+
+## example
+
+```python
 import threading
 from concurrent.futures import ThreadPoolExecutor
 import time
@@ -18,3 +23,4 @@ with ThreadPoolExecutor(max_workers=20) as executor:
     multi_thread_factory = TqdmMultiThreadFactory()
     for i, url in enumerate(tasks, 1):
         executor.submit(demo, multi_thread_factory, i, 100)
+```

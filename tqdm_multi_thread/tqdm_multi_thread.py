@@ -1,5 +1,4 @@
 import io
-import math
 import sys
 
 from tqdm import tqdm

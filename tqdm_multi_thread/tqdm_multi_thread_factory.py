@@ -1,9 +1,6 @@
-import os
 import threading
 
-from tqdm import tqdm
-
-from tqdm_multithread import TqdmMultiThread
+from tqdm_multi_thread import TqdmMultiThread
 
 
 class TqdmMultiThreadFactory:

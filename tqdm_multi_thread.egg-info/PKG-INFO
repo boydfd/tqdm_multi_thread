@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: tqdm-multi-thread
+Version: 0.4
+Summary: A tqdm multi-thread helper
+Home-page: https://github.com/boydfd/tqdm_multi_thread
+Author: Ran Lin
+Author-email: boydfd@gmail.com
+License: UNKNOWN
+Description: # A tqdm multi-thread helper
+        
+        ## example
+        
+        ```python
+        import threading
+        from concurrent.futures import ThreadPoolExecutor
+        import time
+        
+        from tqdm_multi_thread_factory import TqdmMultiThreadFactory
+        
+        
+        def demo(factory, position, total):
+            with factory.create(position, total) as progress:
+                for _ in range(0, total, 5):
+                    progress.update(5)
+                    time.sleep(0.001 * (position % 5 + 1))
+        
+        
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            tasks = range(100)
+            lock = threading.Lock()
+            multi_thread_factory = TqdmMultiThreadFactory()
+            for i, url in enumerate(tasks, 1):
+                executor.submit(demo, multi_thread_factory, i, 100)
+        
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
