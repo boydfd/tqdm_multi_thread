@@ -19,7 +19,6 @@ def demo(factory, position, total):
 
 with ThreadPoolExecutor(max_workers=20) as executor:
     tasks = range(100)
-    lock = threading.Lock()
     multi_thread_factory = TqdmMultiThreadFactory()
     for i, url in enumerate(tasks, 1):
         executor.submit(demo, multi_thread_factory, i, 100)
